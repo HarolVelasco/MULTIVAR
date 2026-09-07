@@ -1,5 +1,5 @@
 /**
- * render2D.js — Dibuja cónicas en <canvas> con ecuaciones paramétricas correctas.
+ * render2d.js — Dibuja cónicas en <canvas> con ecuaciones paramétricas correctas.
  *
  * Dispatcher principal:
  *   renderConic(canvas, conic) — llama al renderizador según conic.type
