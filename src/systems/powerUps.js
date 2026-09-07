@@ -17,7 +17,7 @@ import GameState   from '../core/gameState.js';
 import StateMachine from '../core/stateMachine.js';
 
 // Usos disponibles por partida
-const MAX_USES = { reveal: 2, freeze: 2, magnet: 1 };
+const MAX_USES = { reveal: 2, freeze: 1, magnet: 2 };
 
 const PowerUps = (() => {
   let uses        = { ...MAX_USES };
@@ -80,7 +80,7 @@ const PowerUps = (() => {
 
     uses.freeze--;
     const { timeLeft } = GameState.get();
-    const newTime = Math.min(timeLeft + 10, 90);
+    const newTime = Math.min(timeLeft + 25, 90);
 
     GameState.set({ timeLeft: newTime });
     timerSystem.addTime(10);
