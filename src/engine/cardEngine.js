@@ -12,7 +12,7 @@
 
 import katex from 'katex';
 import { CONICS } from '../data/conics.js';
-import { renderConic } from './render2D.js';
+import { renderConic } from './render2d.js';
 import StateMachine from '../core/stateMachine.js';
 import EventBus from '../core/eventBus.js';
 import GameState from '../core/gameState.js';
