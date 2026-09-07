@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MULTIVAR — Portal Académico de Cálculo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ══ HUB (selector de modo) ══════════════════════════════ -->
+  <div id="screen-hub"     class="fullscreen-overlay hidden"></div>
+
+  <!-- ══ MENÚ CALCMATCH ══════════════════════════════════════ -->
+  <div id="screen-menu"    class="fullscreen-overlay hidden"></div>
+
+  <!-- ══ PAUSA ═══════════════════════════════════════════════ -->
+  <div id="screen-pause"   class="overlay hidden"></div>
+
+  <!-- ══ RESULTADOS ══════════════════════════════════════════ -->
+  <div id="screen-results" class="overlay hidden"></div>
+
+  <!-- ══ ÁREA QUIZ 3D ════════════════════════════════════════ -->
+  <div id="quiz-area" class="quiz-area hidden"></div>
+
+  <!-- ══ ÁREA CALCMATCH ══════════════════════════════════════ -->
+  <div id="game-area" class="hidden">
+
+    <header id="hud" role="banner">
+      <span class="hud__title">CalcMatch</span>
+
+      <div class="hud__metrics">
+        <div class="hud__metric">
+          <span class="hud__metric-label">Tiempo</span>
+          <span class="hud__value" id="hud-timer">05:00</span>
+        </div>
+        <div class="hud__metric">
+          <span class="hud__metric-label">Pares</span>
+          <span class="hud__value" id="hud-pairs">0 / 8</span>
+        </div>
+        <div class="hud__metric">
+          <span class="hud__metric-label">Puntaje</span>
+          <span class="hud__value" id="hud-score">0</span>
+        </div>
+        <span id="hud-combo" aria-live="polite"></span>
+      </div>
+
+      <div class="hud__actions">
+        <button class="pu-btn" data-powerup="reveal" title="Revelar Par (2 usos)">👁 <span class="pu-uses">2</span></button>
+        <button class="pu-btn" data-powerup="freeze" title="Congelar +10s (2 usos)">❄ <span class="pu-uses">2</span></button>
+        <button class="pu-btn" data-powerup="magnet" title="Imán Matemático (1 uso)">🧲 <span class="pu-uses">1</span></button>
+        <button id="btn-pause"   class="btn-icon" aria-label="Pausa">⏸</button>
+        <button class="btn-restart btn-icon" aria-label="Reiniciar">↺</button>
+      </div>
+    </header>
+
+    <div id="hud-bonus-msg" class="hidden" aria-live="polite"></div>
+
+    <main id="app" role="main">
+      <div id="game-board" role="grid" aria-label="Tablero de cartas"></div>
+    </main>
+
+    <section id="gameover-screen" class="overlay hidden" role="dialog">
+      <div class="overlay__card">
+        <h1 class="overlay__title overlay__title--gameover">Tiempo agotado</h1>
+        <p class="overlay__label">Puntaje</p>
+        <p class="overlay__score" id="gameover-score">0</p>
+      </div>
+    </section>
+
+  </div><!-- /game-area -->
+
+  <!-- ══ MODAL 3D ════════════════════════════════════════════ -->
+  <div id="modal-3d" class="modal hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal__card">
+
+      <div class="modal__header">
+        <div class="modal__header-text">
+          <span class="modal__badge">Explorador 3D</span>
+          <h2 class="modal__title" id="modal-title">Superficie</h2>
+          <p  class="modal__desc"  id="modal-desc"></p>
+        </div>
+        <button class="modal__close" id="close-modal" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modal__canvas-wrap">
+        <canvas id="modal-canvas"></canvas>
+        <p class="modal__hint">Arrastra · Scroll para zoom</p>
+      </div>
+
+      <div class="modal__footer">
+        <div class="modal__sheet-wrap" id="modal-mathsheet"></div>
+        <div id="modal-qr"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

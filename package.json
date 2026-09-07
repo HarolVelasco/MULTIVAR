@@ -1,0 +1,18 @@
+{
+  "name": "calcmatch",
+  "version": "1.0.0",
+  "description": "Memory game educativo de Cálculo Multivariable — Cónicas",
+  "type": "module",
+  "scripts": {
+    "dev":     "vite",
+    "build":   "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "katex":   "^0.16.10",
+    "three":   "^0.165.0"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
