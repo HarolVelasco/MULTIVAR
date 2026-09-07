@@ -451,35 +451,49 @@ body {
 /* ── Mobile grande  (≤ 640px) ──────────────────────────── */
 @media (max-width: 640px) {
   :root {
-    --hud-height: 54px;
-    --card-w:     clamp(96px, 22vw, 128px);
-    --card-h:     clamp(74px, 17vw,  98px);
-    --card-radius: 10px;
+    --hud-height:  50px;
+    /* En móvil con 2 cols, las cartas pueden ser más anchas */
+    --card-w:     clamp(130px, 42vw, 170px);
+    --card-h:     clamp(100px, 32vw, 135px);
+    --card-radius: 12px;
   }
 
-  .hud__title    { font-size: 0.88rem; }
-  .hud__metrics  { gap: 0.65rem; }
-  .hud__value    { font-size: 0.95rem; }
-  .btn-restart   { padding: 6px 12px; font-size: 0.7rem; }
+  .hud__title    { font-size: 0.82rem; }
+  .hud__metrics  { gap: 0.5rem; }
+  .hud__value    { font-size: 0.9rem; }
+  .hud__actions  { gap: 3px; }
+  .btn-restart   { padding: 5px 10px; font-size: 0.68rem; }
+  .pu-btn        { padding: 0 6px; font-size: 0.72rem; }
 
-  #game-board    { padding: 0.75rem; gap: 8px; }
+  #game-board {
+    padding: 0.75rem 0.5rem;
+    gap: 10px;
+    /* Centrar el grid y evitar overflow horizontal */
+    width: 100%;
+    overflow-x: hidden;
+  }
 
   .modal__header { padding: 1rem; }
   .modal__title  { font-size: 1.05rem; }
   .modal__canvas-wrap { aspect-ratio: 4 / 3; }
+  .modal__footer { flex-direction: column; }
 
   .overlay__card { padding: 2rem 1.25rem; }
+
+  /* Input de nombre debajo de carta — más ancho en móvil */
+  .card-eq-wrapper { width: var(--card-w); }
+  .card__name-input { font-size: 0.7rem; padding: 6px 8px; }
 }
 
 /* ── Mobile pequeño  (≤ 380px) ─────────────────────────── */
 @media (max-width: 380px) {
   :root {
-    --card-w: clamp(82px, 26vw, 108px);
-    --card-h: clamp(64px, 20vw,  86px);
+    --card-w: clamp(120px, 44vw, 155px);
+    --card-h: clamp(92px,  33vw, 120px);
   }
 
-  .hud__metric-label { display: none; }   /* ocultar labels para ganar espacio */
-  .btn-restart span  { display: none; }   /* solo icono ↺ */
+  .hud__metric-label { display: none; }
+  .hud__actions .pu-btn { display: none; } /* ocultar powerups en pantallas muy pequeñas */
 }
 
 
@@ -1179,6 +1193,33 @@ body {
   flex-direction: column;
   align-items:    center;
   gap:            5px;
+}
+
+
+/* ── HUD compacto en móvil ───────────────────────────────── */
+@media (max-width: 640px) {
+  #hud {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  /* Métricas y acciones en segunda fila si no caben */
+  .hud__metrics {
+    order: 2;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .hud__actions {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 4px;
+  }
+
+  .hud__title { order: 1; }
 }
 
 /* Responsive quiz */

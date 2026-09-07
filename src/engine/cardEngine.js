@@ -5,14 +5,14 @@
  *  1. Tomar CONICS y generar un deck con 2 cartas por cónica (ecuación + gráfica).
  *  2. Barajar el deck con Fisher-Yates.
  *  3. Crear el nodo DOM de cada carta con su cara frontal renderizada.
- *  4. Carta tipo A → KaTeX.  Carta tipo B → Canvas 2D (render2d.js).
+ *  4. Carta tipo A → KaTeX.  Carta tipo B → Canvas 2D (render2D.js).
  *  5. Agregar event listeners de clic que delegan en StateMachine.
  *  6. Exponer initBoard(container) como única API pública.
  */
 
 import katex from 'katex';
 import { CONICS } from '../data/conics.js';
-import { renderConic } from './render2d.js';
+import { renderConic } from './render2D.js';
 import StateMachine from '../core/stateMachine.js';
 import EventBus from '../core/eventBus.js';
 import GameState from '../core/gameState.js';
@@ -175,7 +175,7 @@ function buildGraphFace(frontEl, card) {
 
   const canvas = document.createElement('canvas');
   canvas.classList.add('card__canvas');
-  // Dimensiones lógicas; render2d aplica devicePixelRatio internamente
+  // Dimensiones lógicas; render2D aplica devicePixelRatio internamente
   canvas.width  = 160;
   canvas.height = 120;
 
@@ -200,7 +200,7 @@ function buildGraphFace(frontEl, card) {
 // ─── 4. Renderizado diferido del canvas ───────────────────────────────────
 
 /**
- * Activa el render2d en el canvas de una carta gráfica.
+ * Activa el render2D en el canvas de una carta gráfica.
  * Se llama la primera vez que se voltea, no al montar.
  */
 function ensureGraphRendered(cardEl) {
@@ -317,9 +317,11 @@ export function initBoard(container, conics = CONICS) {
   // Suscribir a eventos del bus
   subscribeToEvents(cardElements);
 
-  // Ajustar columnas del grid dinámicamente según cantidad de cartas
-  const cols = Math.ceil(Math.sqrt(shuffled.length));
-  container.style.setProperty('--board-cols', cols);
+  // Columnas responsivas: en móvil máximo 2, en tablet 3, en desktop según dificultad
+  const baseCols = Math.ceil(Math.sqrt(shuffled.length));
+  const sw = window.innerWidth;
+  const responsiveCols = sw <= 480 ? 2 : sw <= 700 ? 3 : baseCols;
+  container.style.setProperty('--board-cols', responsiveCols);
 
   return shuffled; // útil para tests o inicialización externa
 }

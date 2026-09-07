@@ -21,6 +21,7 @@ import PowerUps                        from './systems/powerUps.js';
 import Modal                           from './components/modal.js';
 import MainMenu, { DIFFICULTY_CONFIG } from './components/mainMenu.js';
 import QuizMode                        from './components/quizMode.js';
+import { startViewer }                 from './components/viewer.js';
 
 // ─── Elementos DOM raíz ───────────────────────────────────
 const boardEl    = document.getElementById('game-board');
@@ -35,6 +36,13 @@ let sessionStats = { actions: 0, errors: 0, maxCombo: 0, startTime: null };
 // ══════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ── Modo Visor QR — interceptar antes de cargar el juego ──
+  const _urlParams = new URLSearchParams(window.location.search);
+  if (_urlParams.get('viewer') === '1') {
+    startViewer(_urlParams);
+    return;  // no inicializar nada más del juego
+  }
+
   // Sistemas que solo suscriben al EventBus
   UIManager.init();
   ScoreSystem.init();
@@ -100,7 +108,7 @@ function startCalcMatch(sel = { difficulty: 'normal', mode: 'arcade' }) {
   const conicSubset = CONICS.slice(0, cfg.pairs);
 
   if (boardEl) {
-    boardEl.style.setProperty('--board-cols', cfg.cols);
+    // Las columnas las calcula initBoard según el ancho real de pantalla
     initBoard(boardEl, conicSubset);
   }
 
