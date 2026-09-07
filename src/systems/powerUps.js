@@ -53,7 +53,7 @@ const PowerUps = (() => {
       // Asegurar render del canvas si es tipo graph
       const front = el.querySelector('.card__front--graph');
       if (front?._canvas && front._canvas.dataset.rendered !== '1') {
-        import('../engine/render2d.js').then(({ renderConic }) => {
+        import('../engine/render2D.js').then(({ renderConic }) => {
           renderConic(front._canvas, front._conic);
           front._canvas.dataset.rendered = '1';
         });
