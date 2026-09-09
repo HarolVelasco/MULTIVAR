@@ -17,7 +17,7 @@ import GameState   from '../core/gameState.js';
 import StateMachine from '../core/stateMachine.js';
 
 // Usos disponibles por partida
-const MAX_USES = { reveal: 2, freeze: 1, magnet: 2 };
+const MAX_USES = { reveal: 1, freeze: 2, magnet: 1 };
 
 const PowerUps = (() => {
   let uses        = { ...MAX_USES };
