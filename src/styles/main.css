@@ -452,10 +452,9 @@ body {
 @media (max-width: 640px) {
   :root {
     --hud-height:  50px;
-    /* En móvil con 2 cols, las cartas pueden ser más anchas */
-    --card-w:     clamp(130px, 42vw, 170px);
-    --card-h:     clamp(100px, 32vw, 135px);
-    --card-radius: 12px;
+    --card-w:     clamp(72px, 21vw, 110px);
+    --card-h:     clamp(56px, 16vw,  85px);
+    --card-radius: 10px;
   }
 
   .hud__title    { font-size: 0.82rem; }
@@ -466,11 +465,10 @@ body {
   .pu-btn        { padding: 0 6px; font-size: 0.72rem; }
 
   #game-board {
-    padding: 0.75rem 0.5rem;
-    gap: 10px;
-    /* Centrar el grid y evitar overflow horizontal */
-    width: 100%;
-    overflow-x: hidden;
+    padding: 0.5rem;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .modal__header { padding: 1rem; }
@@ -479,21 +477,16 @@ body {
   .modal__footer { flex-direction: column; }
 
   .overlay__card { padding: 2rem 1.25rem; }
-
-  /* Input de nombre debajo de carta — más ancho en móvil */
-  .card-eq-wrapper { width: var(--card-w); }
-  .card__name-input { font-size: 0.7rem; padding: 6px 8px; }
 }
 
 /* ── Mobile pequeño  (≤ 380px) ─────────────────────────── */
 @media (max-width: 380px) {
   :root {
-    --card-w: clamp(120px, 44vw, 155px);
-    --card-h: clamp(92px,  33vw, 120px);
+    --card-w: clamp(64px, 20vw, 88px);
+    --card-h: clamp(50px, 15vw, 70px);
   }
 
   .hud__metric-label { display: none; }
-  .hud__actions .pu-btn { display: none; } /* ocultar powerups en pantallas muy pequeñas */
 }
 
 

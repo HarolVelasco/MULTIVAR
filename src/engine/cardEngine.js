@@ -317,11 +317,9 @@ export function initBoard(container, conics = CONICS) {
   // Suscribir a eventos del bus
   subscribeToEvents(cardElements);
 
-  // Columnas responsivas: en móvil máximo 2, en tablet 3, en desktop según dificultad
-  const baseCols = Math.ceil(Math.sqrt(shuffled.length));
-  const sw = window.innerWidth;
-  const responsiveCols = sw <= 480 ? 2 : sw <= 700 ? 3 : baseCols;
-  container.style.setProperty('--board-cols', responsiveCols);
+  // Columnas según dificultad — igual en todos los dispositivos
+  const cols = Math.ceil(Math.sqrt(shuffled.length));
+  container.style.setProperty('--board-cols', cols);
 
   return shuffled; // útil para tests o inicialización externa
 }

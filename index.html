@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>MULTIVAR — Portal Académico de Cálculo</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <!-- KaTeX CSS viene de npm via main.js → sin CDN externo -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
@@ -70,6 +71,16 @@
         <p class="overlay__score" id="gameover-score">0</p>
       </div>
     </section>
+
+  <!-- Pantalla de victoria -->
+  <section id="win-screen" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="overlay__card">
+      <h1 class="overlay__title overlay__title--win">¡Completado!</h1>
+      <p class="overlay__label">Puntaje final</p>
+      <p class="overlay__score" id="win-score">0</p>
+      <button class="btn-restart overlay__btn">Jugar de nuevo</button>
+    </div>
+  </section>
 
   </div><!-- /game-area -->
 
