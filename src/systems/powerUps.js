@@ -83,7 +83,7 @@ const PowerUps = (() => {
     const newTime = Math.min(timeLeft + 25, 90);
 
     GameState.set({ timeLeft: newTime });
-    timerSystem.addTime(10);
+    timerSystem.addTime(20);
 
     EventBus.emit('powerup:used', { type: 'freeze', usesLeft: uses.freeze });
     EventBus.emit('timer:tick',   { timeLeft: newTime });

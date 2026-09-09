@@ -22,7 +22,7 @@
 
 export const DIFFICULTY_CONFIG = {
   easy:   { label: 'Fácil',   cols: 3, pairs: 4,  time: 300, grid: '3×4' },
-  normal: { label: 'Normal',  cols: 4, pairs: 8,  time: 180, grid: '4×4' },
+  normal: { label: 'Normal',  cols: 4, pairs: 8,  time: 240, grid: '4×4' },
 };
 
 const MainMenu = (() => {
